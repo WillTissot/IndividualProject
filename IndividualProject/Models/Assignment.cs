@@ -13,8 +13,8 @@ namespace IndividualProject.Models
         private string _title; //Individual Project Part A
         private string _description; //Η εκφώνηση
         private DateTime _subdatetime; // the date should be withing start and end date of the related course
-        private int _oralmark;   //max20 min 0
-        private int _totalmark; //max80 min 0 those two should make 100. total mark is the homework
+        private float _oralmark;   //max20 min 0
+        private float _totalmark; //max80 min 0 those two should make 100. total mark is the homework
 
         public string Title
         {
@@ -34,12 +34,12 @@ namespace IndividualProject.Models
             get { return (_subdatetime); }
             set { this._subdatetime = Convert.ToDateTime(value); }
         }
-        public int OralMark
+        public float OralMark
         {
             get { return (_oralmark); }
             set { this._oralmark = Convert.ToInt32(value); }
         }
-        public int TotalMark
+        public float TotalMark
         {
             get { return (_totalmark); }
             set { this._totalmark = Convert.ToInt32(value); }

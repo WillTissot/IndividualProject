@@ -6,7 +6,27 @@ using System.Threading.Tasks;
 
 namespace IndividualProject.Models
 {
-    class Student
+    class Student : Human
     {
+
+        private DateTime _dateofbirth;
+        private double _tuitionfees;
+
+        public DateTime DateOfBirth
+        {
+            get { return (this._dateofbirth); }
+            set { this._dateofbirth = value; }
+        }
+
+        public double TuitionFees
+        {
+            get { return (this._tuitionfees); }
+            set { this._tuitionfees = value; }
+        }
+
+        public override string ToString()
+        {
+            return ($"The student {FirstName} {LastName}, born in {_dateofbirth}, owes {_tuitionfees} euro in tuition fees");
+        }
     }
 }
