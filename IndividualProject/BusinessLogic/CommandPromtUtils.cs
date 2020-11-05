@@ -94,7 +94,7 @@ namespace IndividualProject.BusinessLogic
             return (student);
         }
         //-----------------------------------------------------------------------OTHER---------------------------------------------------------------------------
-        private bool AskUserToExitRecording()
+        public bool AskUserToExitRecording()
         {
             bool decideAboutRecording;
             Console.WriteLine("Press any key to continue or ESCAPE to exit recording");

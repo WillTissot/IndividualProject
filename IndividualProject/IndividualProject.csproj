@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\Class1.cs" />
+    <Compile Include="BusinessLogic\DataEntry.cs" />
     <Compile Include="BusinessLogic\CommandPromtUtils.cs" />
+    <Compile Include="BusinessLogic\ListData.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Human.cs" />

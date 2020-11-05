@@ -63,7 +63,7 @@ namespace IndividualProject.Models
         }
         public override string ToString()
         {
-            return ($"The {_title} is under the {_stream} stream with {_type} type. It starts on {_startdate} and it end on {_enddate}");
+            return ($"\nThe {_title} is under the {_stream} stream with {_type} type. It starts on {_startdate} and it end on {_enddate}");
         }
     }   
 }

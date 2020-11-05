@@ -39,9 +39,21 @@ namespace IndividualProject.Models
             string trainers = string.Empty;
             foreach (var item in Trainer)
             {
-                trainers += ",  " + (item); // to look at it again!!!!!!!!!!!!!!
+                trainers += ",  " + (item);
             }
-            return (trainers);
+            string students = string.Empty;
+            foreach (var item in Students)
+            {
+                students += ",  " + (item); 
+            }
+            string assignments = string.Empty;
+            foreach (var item in Assignment)
+            {
+                assignments += ",  " + (item); 
+            }
+
+            return ($"The {Course} has the following trainers {trainers}. The students attending are {students} " +
+                    $"and they have to complete these assignments {assignments}" );
         }
     }
 }
