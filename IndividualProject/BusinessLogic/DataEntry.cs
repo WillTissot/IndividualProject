@@ -32,7 +32,7 @@ namespace IndividualProject.BusinessLogic
             Console.WriteLine("---- Recording a new Schoolclass ----");
             schoolClass.Course     = utils.GetCourseInfo();
             schoolClass.Trainer    = utils.GetTrainers(schoolClass.Course.Title);
-            schoolClass.Assignment = utils.GetAssignments();
+            schoolClass.Assignment = utils.GetAssignments(schoolClass.Course.StartDate, schoolClass.Course.EndDate);
             schoolClass.Students   = utils.GetStudents();
             return (schoolClass);
         }

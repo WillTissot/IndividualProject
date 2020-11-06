@@ -46,6 +46,7 @@
     <Compile Include="BusinessLogic\DataEntry.cs" />
     <Compile Include="BusinessLogic\CommandPromtUtils.cs" />
     <Compile Include="BusinessLogic\ListData.cs" />
+    <Compile Include="BusinessLogic\Validations.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Human.cs" />

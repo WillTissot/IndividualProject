@@ -16,6 +16,7 @@ namespace IndividualProject.BusinessLogic
         public Course GetCourseInfo()
         {
             Course course    = new Course();
+
             Console.WriteLine("---- Recording Course Information ----");
             course.Stream    = AskDetail("Please enter the stream: ");
             course.Type      = AskDetail("Please enter the type: ");
@@ -48,26 +49,27 @@ namespace IndividualProject.BusinessLogic
         }
         //-----------------------------------------------------------------------ASSIGNMENT----------------------------------------------------------------------
         
-        public List<Assignment> GetAssignments()
+        public List<Assignment> GetAssignments(DateTime startDate, DateTime endDate)
         {
             List <Assignment> assignments = new List<Assignment>();
             Console.WriteLine("---- Recording Assignment Information ----");
             do
             {
-                assignments.Add(GetAssignmentInfo());
+                assignments.Add(GetAssignmentInfo(startDate, endDate));
             } 
             while (AskUserToExitRecording());
             return (assignments);
         }
     
-        private Assignment GetAssignmentInfo()
+        private Assignment GetAssignmentInfo(DateTime startDate, DateTime endDate)
         {
             Assignment assignment = new Assignment();
+            Validations validations = new Validations();
             assignment.Title       = AskDetail("Please enter title: ");
             assignment.Description = AskDetail("Please enter description: ");
-            assignment.SubDateTime = Convert.ToDateTime(AskDetail("Please enter submission date: (i.e. 20/03/2000)"));
-            assignment.OralMark    = (float)Convert.ToDouble(AskDetail("Please enter oral's exam grade: "));
-            assignment.TotalMark   = (float)Convert.ToDouble(AskDetail("Please enter total exam grade: "));
+            assignment.SubDateTime = validations.ValidateSubDate(startDate, endDate);
+            assignment.OralMark    = validations.ValidateMark(20, "Oral");
+            assignment.TotalMark   = validations.ValidateMark(80, "Total");
             return (assignment);
         }
         //-----------------------------------------------------------------------STUDENT-------------------------------------------------------------------------
@@ -87,10 +89,11 @@ namespace IndividualProject.BusinessLogic
         private Student GetStudentInfo()
         {
             Student student     = new Student();
+            Validations validations = new Validations();
             student.FirstName   = AskDetail("Please enter the first name: ");
             student.LastName    = AskDetail("Please enter the last name: ");
-            student.DateOfBirth = Convert.ToDateTime(AskDetail("Please enter the date of birth: "));
-            student.TuitionFees = Convert.ToDouble(AskDetail("Please enter the tuition fees: "));
+            student.DateOfBirth = validations.ValidateBirth();
+            student.TuitionFees = validations.ValidateFees();
             return (student);
         }
         //-----------------------------------------------------------------------OTHER---------------------------------------------------------------------------
@@ -108,7 +111,7 @@ namespace IndividualProject.BusinessLogic
             }
             return (decideAboutRecording);
         }
-        private string AskDetail(string message, List<string> subjects = null)
+        public string AskDetail(string message, List<string> subjects = null)
         {
             Console.Write(message);
             string result = Console.ReadLine();

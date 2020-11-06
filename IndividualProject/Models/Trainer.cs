@@ -19,7 +19,7 @@ namespace IndividualProject.Models
 
         public override string ToString()
         {
-            return($"First Name: {FirstName} Last Name: {LastName} Subject: {_subject}");
+            return($"{FirstName} {LastName} is a trainer of the {_subject}.");
         }
     }
 

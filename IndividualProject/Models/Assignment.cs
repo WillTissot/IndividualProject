@@ -9,10 +9,9 @@ namespace IndividualProject.Models
 {
     class Assignment
     {
-        //given submitted
-        private string _title; //Individual Project Part A
-        private string _description; //Η εκφώνηση
-        private DateTime _subdatetime; // the date should be withing start and end date of the related course
+        private string _title; 
+        private string _description;
+        private DateTime _subdatetime; 
         private float _oralmark;   //max20 min 0
         private float _totalmark; //max80 min 0 those two should make 100. total mark is the homework
 
@@ -27,7 +26,7 @@ namespace IndividualProject.Models
         public string Description
         {
             get { return (_description); }
-            set { this._description = value; } // to think whether I want a specific form of string for the description
+            set { this._description = value; } 
         }
         public DateTime SubDateTime
         {
@@ -47,7 +46,8 @@ namespace IndividualProject.Models
 
         public override string ToString()
         {
-            return ($"The oral mark is {_oralmark} and the total mark of this assignment is {_totalmark}");
+            return ($"The {_title} assignment with description: {_description}, had submission date {_subdatetime}" + 
+                    $"The oral mark is {_oralmark} and the total mark of {_title} is {_totalmark}");
         }
     }
-}
+}   
