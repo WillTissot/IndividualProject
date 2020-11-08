@@ -20,7 +20,7 @@ namespace IndividualProject.BusinessLogic
                 continueAsking = !(startDate < date && date < endDate);
                 if (continueAsking == true)
                 {
-                    Console.WriteLine($"Assignment's submission date must be within course's date span! {startDate.Date} - {endDate.Date} "); // prints also the time
+                    Console.WriteLine($"Assignment's submission date must be within course's date span! {startDate.ToShortDateString()} - {endDate.ToShortDateString()} "); // prints also the time
                 }
             }
             while (continueAsking);
@@ -31,7 +31,7 @@ namespace IndividualProject.BusinessLogic
             float mark;
             do
             {
-                mark = (float)Convert.ToDouble(AskDetail($"Please enter {nameExam}'s exam grade: "));
+                mark = (float)Convert.ToDouble(AskDetail($"Please enter {nameExam}'s weight factor: "));
                 if (!(0 <= mark && mark <= maxMark))
                 {
                     Console.WriteLine($"Mark must be non negative and its max value {maxMark}/100");

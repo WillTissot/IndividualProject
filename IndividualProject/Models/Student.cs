@@ -11,6 +11,13 @@ namespace IndividualProject.Models
 
         private DateTime _dateofbirth;
         private double _tuitionfees;
+        private List<string> _titleOfAssignment;
+
+        public List<string> TitleOfAssignment
+        {
+            get { return (this._titleOfAssignment); }
+            set { this._titleOfAssignment = value; }
+        }
 
         public DateTime DateOfBirth
         {
@@ -26,7 +33,7 @@ namespace IndividualProject.Models
 
         public override string ToString()
         {
-            return ($"The student {FirstName} {LastName}, born in {_dateofbirth}, owes {_tuitionfees} euro in tuition fees");
-        }
-    }
+            return ($"The student {FirstName} {LastName}, born in {_dateofbirth.ToShortDateString()}, owes {_tuitionfees} euro in tuition fees");
+        }           
+    }   
 }

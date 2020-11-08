@@ -12,16 +12,16 @@ namespace IndividualProject.Models
         private string _title; 
         private string _description;
         private DateTime _subdatetime; 
-        private float _oralmark;   //max20 min 0
-        private float _totalmark; //max80 min 0 those two should make 100. total mark is the homework
+        private float _oralmark;   
+        private float _totalmark; 
 
         public string Title
         {
             get { return (_title); }
             set
             {
-                TextInfo changeStringForm = new CultureInfo("en-US", false).TextInfo; // to check whether it does the title Titlecase!!!!
-                this._title = changeStringForm.ToTitleCase(value); }                  // this should be removed from here!!!!
+                TextInfo changeStringForm = new CultureInfo("en-US", false).TextInfo; 
+                this._title = changeStringForm.ToTitleCase(value); }                  
         }
         public string Description
         {
@@ -46,8 +46,9 @@ namespace IndividualProject.Models
 
         public override string ToString()
         {
-            return ($"The {_title} assignment with description: {_description}, had submission date {_subdatetime}" + 
-                    $"The oral mark is {_oralmark} and the total mark of {_title} is {_totalmark}");
+            return ($"The {_title} assignment with description: {_description}, had submission date {_subdatetime.ToShortDateString()}. " +
+                    $"Oral's exam weight factor is: {OralMark} and the weight factor for the total exam is {TotalMark} ");
+                   
         }
     }
 }   
