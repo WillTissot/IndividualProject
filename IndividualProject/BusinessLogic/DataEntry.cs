@@ -65,6 +65,11 @@ namespace IndividualProject.BusinessLogic
             Console.WriteLine();
             Console.WriteLine("---- Printing Assignments per Students List ----");
             createListData.AssignmentsPerStudent(schoolClasses);
+
+            Console.WriteLine();
+            Console.WriteLine("---- Printing the students who have to submit their assignments within a specific week: ");
+            DateSearchForDeadlines dateSearchForDeadlines = new DateSearchForDeadlines();
+            dateSearchForDeadlines.GetDeadlines(schoolClasses);
         }
         
 

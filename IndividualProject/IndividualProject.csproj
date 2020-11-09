@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="BusinessLogic\DataEntry.cs" />
     <Compile Include="BusinessLogic\CommandPromtUtils.cs" />
+    <Compile Include="BusinessLogic\DateSearchForDeadlines.cs" />
     <Compile Include="BusinessLogic\ListData.cs" />
     <Compile Include="BusinessLogic\Validations.cs" />
     <Compile Include="Models\Assignment.cs" />

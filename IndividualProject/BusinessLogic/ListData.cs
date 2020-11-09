@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using IndividualProject.Models;
 using IndividualProject.BusinessLogic;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IndividualProject.BusinessLogic
 {
@@ -49,20 +51,22 @@ namespace IndividualProject.BusinessLogic
             }
             StudentsAttedingMoreThanOne(entriesOfAllStudents);
         }
-        public void StudentsAttedingMoreThanOne (List<Student> allStudents)
+        private void StudentsAttedingMoreThanOne (List<Student> allStudents)
         {
-            List<Student> duplicatedStudents = new List<Student>();
-            for (int i = 0; i < allStudents.Count; i++)
+            Console.WriteLine();
+            Console.WriteLine("---------------------------------------------------------------Duplicates");
+
+            List<Student> lala = new List<Student>();
+            var duplicates = allStudents
+                .GroupBy(x => new { x.LastName, x.FirstName, x.DateOfBirth, x.TuitionFees })
+                .Where(g => g.Count() > 1)
+                .Select(a => a.Key);
+                        
+            foreach (var item in duplicates)
             {
-                if (allStudents[i].FirstName == allStudents[i+1].FirstName && allStudents[i].LastName == allStudents[i+1].LastName && allStudents[i].DateOfBirth == allStudents[i + 1].DateOfBirth)
-                {
-
-                }
-
-
+                Console.WriteLine(item);
             }
         }
-
 
         //-----------------------------------------------------------------------ASSIGNMENT LIST---------------------------------------------------------------------
         public void AssignmentList (List<SchoolClass> schoolClasses)
