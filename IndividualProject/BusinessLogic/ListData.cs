@@ -36,7 +36,7 @@ namespace IndividualProject.BusinessLogic
             }
         }
         //-----------------------------------------------------------------------STUDENT LIST--------------------------------------------------------------------
-        public void StudentList(List<SchoolClass> schoolClasses)
+        public List<Student> StudentList(List<SchoolClass> schoolClasses)
         {
             List<Student> listOfStudents = new List<Student>();
             List<Student> entriesOfAllStudents = new List<Student>();
@@ -45,17 +45,19 @@ namespace IndividualProject.BusinessLogic
                 listOfStudents = listOfStudents.Union(schoolClasses[i].Students).ToList();
                 entriesOfAllStudents = entriesOfAllStudents.Concat(schoolClasses[i].Students).ToList();
             }
-            foreach (var item in listOfStudents)
+            var distinctStudents = listOfStudents
+                .GroupBy(x => new { x.LastName, x.FirstName, x.DateOfBirth, x.TuitionFees })
+                .Select(g => g.First())
+                .ToList();
+
+            foreach (var item in distinctStudents)
             {
                 Console.WriteLine(item);
             }
-            StudentsAttedingMoreThanOne(entriesOfAllStudents);
+            return (entriesOfAllStudents);
         }
-        private void StudentsAttedingMoreThanOne (List<Student> allStudents)
+        public void StudentsAttedingMoreThanOne (List<Student> allStudents)
         {
-            Console.WriteLine();
-            Console.WriteLine("---------------------------------------------------------------Duplicates");
-
             List<Student> lala = new List<Student>();
             var duplicates = allStudents
                 .GroupBy(x => new { x.LastName, x.FirstName, x.DateOfBirth, x.TuitionFees })
@@ -67,7 +69,6 @@ namespace IndividualProject.BusinessLogic
                 Console.WriteLine(item);
             }
         }
-
         //-----------------------------------------------------------------------ASSIGNMENT LIST---------------------------------------------------------------------
         public void AssignmentList (List<SchoolClass> schoolClasses)
         {
@@ -81,7 +82,6 @@ namespace IndividualProject.BusinessLogic
                 Console.WriteLine(item);
             }
         }
-
         public void StudentsPerCourse(List<SchoolClass> schoolClasses)
         {
             for ( int i = 0; i < schoolClasses.Count; i++)
@@ -104,7 +104,6 @@ namespace IndividualProject.BusinessLogic
                 }
             }
         }
-
         public void AssignmentsPerCourse(List<SchoolClass> schoolClasses)
         {
             for (int i = 0; i < schoolClasses.Count; i++)
@@ -116,7 +115,6 @@ namespace IndividualProject.BusinessLogic
                 }
             }
         }
-
         public void AssignmentsPerStudent(List<SchoolClass> schoolClasses)
         {
             for (int i = 0; i < schoolClasses.Count; i++)

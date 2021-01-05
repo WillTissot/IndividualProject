@@ -16,13 +16,12 @@ namespace IndividualProject.BusinessLogic
             CommandPromtUtils utils = new CommandPromtUtils();
             List<SchoolClass> schoolClasses = new List<SchoolClass>();
 
-            //Console.WriteLine("---- Starting Recording Process ----");
-
             do
             {
                 schoolClasses.Add(GetSchoolClassesInfo());
             }
             while (utils.AskUserToExitRecording());
+
             PrintRawData(schoolClasses);
         }
         private SchoolClass GetSchoolClassesInfo()
@@ -41,35 +40,41 @@ namespace IndividualProject.BusinessLogic
         internal void PrintRawData(List<SchoolClass> schoolClasses)
         {
             CreateListData createListData = new CreateListData();
-            Console.WriteLine("---- Printing Courses' List ----");
+            Console.WriteLine("--------------------------------------------------Printing Courses' List-------------------------------------------------------");
             createListData.CourseList(schoolClasses);
             Console.WriteLine();
-            Console.WriteLine("---- Printing Trainers' List ----");
+            Console.WriteLine("--------------------------------------------------Printing Trainers' List------------------------------------------------------");
             createListData.TrainerList(schoolClasses);
             Console.WriteLine();
-            Console.WriteLine("---- Printing Students' List ----");
-            createListData.StudentList(schoolClasses);
+            Console.WriteLine("--------------------------------------------------Printing Students' List------------------------------------------------------");
+            List<Student> allEntries = createListData.StudentList(schoolClasses);
             Console.WriteLine();
-            Console.WriteLine("---- Printing Assignments' List ----");
+            Console.WriteLine("--------------------------------------------------Printing Assignments' List---------------------------------------------------");
             createListData.AssignmentList(schoolClasses);
             Console.WriteLine();
 
-            Console.WriteLine("---- Printing Students per Course List ----");
+            Console.WriteLine("--------------------------------------------------Printing Students per Course List--------------------------------------------");
             createListData.StudentsPerCourse(schoolClasses);
             Console.WriteLine();
-            Console.WriteLine("---- Printing Trainers per Course List ----");
+            Console.WriteLine("--------------------------------------------------Printing Trainers per Course List--------------------------------------------");
             createListData.TrainersPerCourse(schoolClasses);
             Console.WriteLine();
-            Console.WriteLine("---- Printing Assignments per Course List ----");
+            Console.WriteLine("--------------------------------------------------Printing Assignments per Course List-----------------------------------------");
             createListData.AssignmentsPerCourse(schoolClasses);
             Console.WriteLine();
-            Console.WriteLine("---- Printing Assignments per Students List ----");
+            Console.WriteLine("--------------------------------------------------Printing Assignments per Students List---------------------------------------");
             createListData.AssignmentsPerStudent(schoolClasses);
 
             Console.WriteLine();
-            Console.WriteLine("---- Printing the students who have to submit their assignments within a specific week: ");
+            Console.WriteLine("--------------------------------------------------Printing Students who attend two or more lessons-----------------------------");
+            createListData.StudentsAttedingMoreThanOne(allEntries);
+
+            Console.WriteLine();
+            Console.WriteLine("--------------------------Printing the students who have to submit their assignments within a specific week--------------------");
             DateSearchForDeadlines dateSearchForDeadlines = new DateSearchForDeadlines();
             dateSearchForDeadlines.GetDeadlines(schoolClasses);
+
+
         }
         
 

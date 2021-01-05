@@ -12,8 +12,7 @@ namespace IndividualProject
     {
         static void Main(string[] args)
         {
-            DataEntry class1 = new DataEntry();
-            class1.GetSchoolClasses();
+            Execute execute = new Execute();
         }
 
 

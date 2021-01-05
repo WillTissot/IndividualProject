@@ -86,7 +86,6 @@ namespace IndividualProject.BusinessLogic
             while (AskUserToExitRecording());   
             return (students);
         }
-
         private Student GetStudentInfo(List<Assignment> assignments)
         {
             Student student = new Student();
@@ -97,7 +96,6 @@ namespace IndividualProject.BusinessLogic
             student.TuitionFees = validations.ValidateFees();
             return (student);
         }
-
         //-----------------------------------------------------------------------OTHER---------------------------------------------------------------------------
         public bool AskUserToExitRecording()
         {
@@ -119,5 +117,7 @@ namespace IndividualProject.BusinessLogic
             string result = Console.ReadLine();
             return (result);
         }
+
+
     }
 }
